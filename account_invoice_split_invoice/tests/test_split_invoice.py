@@ -10,7 +10,6 @@
 
 from odoo.tests import common
 from datetime import datetime
-from odoo import netsvc
 import logging
 logger = logging.getLogger(__name__)
 
@@ -40,10 +39,7 @@ class TestSplitInvoice(common.TransactionCase):
         invoice_obj = self.env['account.invoice']
         invoice = invoice_obj.browse(self.invoice_id)
         self.assertTrue(invoice)
-        wf_service = netsvc.LocalService('workflow')
-        wf_service.trg_validate(
-            self.uid, 'account.invoice', self.invoice_id,
-            'invoice_open', self.cr)
+        invoice.action_invoice_open()
         wizard_obj = self.env['account.invoice.split.wizard'].with_context(
             {'active_id': self.invoice_id})
         wizard = wizard_obj.create({})
