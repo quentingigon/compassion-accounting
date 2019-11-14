@@ -8,7 +8,7 @@
 #                        /_/
 #                            in Jesus' name
 #
-#    Copyright (C) 2015-2017 Compassion CH (http://www.compassion.ch)
+#    Copyright (C) 2015-2019 Compassion CH (http://www.compassion.ch)
 #    @author: Emanuel Cino <ecino@compassion.ch>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@
     'category': 'Accounting',
     'depends': [
         'analytic',
-        'account_fiscal_month',
+        'account_fiscal_month',  # oca/account-financial-tools,oca/server-ux
     ],
     'external_dependencies': {},
     'data': [
@@ -46,4 +46,5 @@
     ],
     'demo': [],
     'installable': True,
+    'development_status': 'Stable'
 }

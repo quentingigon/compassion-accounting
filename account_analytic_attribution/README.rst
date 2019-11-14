@@ -7,6 +7,7 @@ Analytic attribution
    !! changes will be overwritten.                   !!
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+<<<<<<< HEAD
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
@@ -21,6 +22,16 @@ Analytic attribution
     :alt: Translate me on Weblate
 
 |badge1| |badge2| |badge3| |badge4| 
+=======
+.. |badge1| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+    :alt: License: AGPL-3
+.. |badge2| image:: https://img.shields.io/badge/github-CompassionCH%2Fcompassion--accounting-lightgray.png?logo=github
+    :target: https://github.com/CompassionCH/compassion-accounting/tree/11.0/account_analytic_attribution
+    :alt: CompassionCH/compassion-accounting
+
+|badge1| |badge2| 
+>>>>>>> 755eefbf76c5e2521b35f8ea6ebad1b0914665f5
 
 This module is meant to be the successor of Odoo 8 Analytic Plans.
 However, it works a bit differently. Instead of directly
@@ -45,6 +56,7 @@ enable to launch the attribution automatically when you want. It will
 perform the distribution for the last fiscal year (closed period). One good
 idea is to setup the CRON to launch at the beginning of your fiscal year.
 
+<<<<<<< HEAD
 Bug Tracker
 ===========
 
@@ -52,6 +64,26 @@ Bugs are tracked on `GitHub Issues <https://github.com/OCA/{compassion-accountin
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
 `feedback <https://github.com/OCA/{compassion-accounting}/issues/new?body=module:%20account_analytic_attribution%0Aversion:%2011.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+=======
+Usage
+=====
+
+To use this module, go to menu Invoicing/Analytic Accounting:
+
+* Create analytic attributions: choose an analytic tag and setup the
+  distribution applied for this tag. You can add conditions to filter analytic
+  lines that will be distributed.
+* The distribution is either performed with the CRON or you can launch it
+  manually for the current fiscal year using the menu `Launch Distribution`
+
+Bug Tracker
+===========
+
+Bugs are tracked on `GitHub Issues <https://github.com/CompassionCH/compassion-accounting/issues>`_.
+In case of trouble, please check there if your issue has already been reported.
+If you spotted it first, help us smashing it by providing a detailed and welcomed
+`feedback <https://github.com/CompassionCH/compassion-accounting/issues/new?body=module:%20account_analytic_attribution%0Aversion:%2011.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+>>>>>>> 755eefbf76c5e2521b35f8ea6ebad1b0914665f5
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -72,6 +104,7 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
+<<<<<<< HEAD
 This module is maintained by the OCA.
 
 .. image:: https://odoo-community.org/logo.png
@@ -85,3 +118,15 @@ promote its widespread use.
 This module is part of the `OCA/{compassion-accounting} <https://github.com/OCA/{compassion-accounting}/tree/11.0/account_analytic_attribution>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
+=======
+This module is maintained by Compassion Switzerland.
+
+.. image:: https://upload.wikimedia.org/wikipedia/en/8/83/CompassionInternationalLogo.png
+   :alt: Compassion Switzerland
+   :target: https://www.compassion.ch
+
+Compassion Switzerland is a nonprofit organization whose
+mission is to release children from extreme poverty in Jesus name.
+
+This module is part of the `CompassionCH/compassion-accounting <https://github.com/CompassionCH/compassion-accounting/tree/11.0/account_analytic_attribution>`_ project on GitHub.
+>>>>>>> 755eefbf76c5e2521b35f8ea6ebad1b0914665f5
