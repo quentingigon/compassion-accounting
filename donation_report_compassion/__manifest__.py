@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #       ______ Releasing children from poverty      _
@@ -29,7 +28,7 @@
 # pylint: disable=C8101
 {
     "name": "Compassion Donation Report",
-    "version": "10.0.1.0.0",
+    "version": "11.0.0.0.0",
     "author": "Compassion CH",
     "category": "Finance",
     "website": "http://www.compassion.ch",
@@ -38,7 +37,7 @@
     "demo": [],
     "test": [],
     "license": "AGPL-3",
-    "installable": False,
+    "installable": True,
     "auto_install": False,
     "application": False,
 }
