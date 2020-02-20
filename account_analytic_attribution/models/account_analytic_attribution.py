@@ -109,8 +109,8 @@ class AccountAttribution(models.Model):
             year = datetime.today()
             year = year - relativedelta(years=1)
             fy = self.env.user.company_id.compute_fiscalyear_dates(year)
-            date_start = fields.Date.to_string(fy['date_from'])
-            date_stop = fields.Date.to_string(fy['date_to'])
+            date_start = fy['date_from']
+            date_stop = fy['date_to']
         return date_start, date_stop
 
     def _filter_analytic_lines_and_removed_old_ones(self, date_start,
