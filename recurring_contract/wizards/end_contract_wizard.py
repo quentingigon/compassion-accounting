@@ -34,7 +34,7 @@ class EndContractWizard(models.TransientModel):
         if self.additional_notes:
             self.contract_ids.message_post(self.additional_notes)
         now = datetime.now()
-        end_date = fields.Datetime.from_string(self.end_date)
+        end_date = self.end_date
         if end_date > now:
             # The contract will be ended by CRON later
             return True

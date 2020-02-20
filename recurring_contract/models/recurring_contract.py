@@ -160,15 +160,13 @@ class RecurringContract(models.Model):
             default = default or dict()
             # Put next_invoice_date after last_paid_date when copying contract
             if contract.last_paid_invoice_date:
-                last_paid_invoice = fields.Date.from_string(
-                    contract.last_paid_invoice)
+                last_paid_invoice = contract.last_paid_invoice
                 next_invoice_date = fields.Date.to_string(
                     last_paid_invoice + relativedelta(months=1))
             else:
                 # If it wasn't paid, put it this month (same day as before)
                 today = datetime.today()
-                next_invoice_date = fields.Date.from_string(
-                    contract.next_invoice_date)
+                next_invoice_date = contract.next_invoice_date
                 next_invoice_date = next_invoice_date.replace(
                     month=today.month, year=today.year)
             default['next_invoice_date'] = fields.Date.to_string(
@@ -203,7 +201,7 @@ class RecurringContract(models.Model):
         for contract in self:
             if contract.state in gen_states:
                 last_invoice_date = max([
-                    fields.Date.from_string(line.invoice_id.date_invoice) for
+                    line.invoice_id.date_invoice for
                     line in contract.invoice_line_ids
                     if line.state in ('open', 'paid')] or [False])
                 if last_invoice_date:
@@ -213,7 +211,7 @@ class RecurringContract(models.Model):
                 else:
                     # No open/paid invoices, look for cancelled ones
                     next_invoice_date = min([
-                        fields.Date.from_string(line.invoice_id.date_invoice)
+                        line.invoice_id.date_invoice
                         for line in contract.invoice_line_ids
                         if line.state == 'cancel'] or [False])
                     if next_invoice_date:
@@ -555,7 +553,7 @@ class RecurringContract(models.Model):
 
     def _compute_next_invoice_date(self):
         """ Compute next_invoice_date for a single contract. """
-        next_date = fields.Date.from_string(self.next_invoice_date)
+        next_date = self.next_invoice_date
         next_date += self.group_id.get_relative_delta()
         return fields.Date.to_string(next_date)
 
@@ -586,10 +584,9 @@ class RecurringContract(models.Model):
 
     def _on_change_next_invoice_date(self, new_invoice_date):
         for contract in self:
-            new_invoice_date = fields.Date.from_string(new_invoice_date)
+            new_invoice_date = new_invoice_date
             if contract.next_invoice_date:
-                next_invoice_date = fields.Date.from_string(
-                    contract.next_invoice_date)
+                next_invoice_date = contract.next_invoice_date
                 if next_invoice_date > new_invoice_date:
                     # Cancel invoices after new_invoice_date
                     contract.clean_invoices(
