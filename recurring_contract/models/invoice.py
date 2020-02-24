@@ -17,7 +17,7 @@ class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
     recurring_invoicer_id = fields.Many2one(
-        'recurring.invoicer', 'Invoicer')
+        'recurring.invoicer', 'Invoicer', readonly=False)
 
     @api.multi
     def action_invoice_paid(self):
@@ -160,7 +160,7 @@ class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
 
     contract_id = fields.Many2one(
-        'recurring.contract', 'Source contract', index=True)
+        'recurring.contract', 'Source contract', index=True, readonly=False)
 
     due_date = fields.Date(
         related='invoice_id.date_due',

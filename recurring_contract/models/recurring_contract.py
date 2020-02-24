@@ -46,7 +46,7 @@ class RecurringContract(models.Model):
         track_visibility="onchange", copy=False)
     end_reason_id = fields.Many2one(
         'recurring.contract.end.reason', 'End reason', copy=False,
-        ondelete='restrict'
+        ondelete='restrict', readonly=False
     )
     next_invoice_date = fields.Date(
         readonly=False, states={'draft': [('readonly', False)]},
@@ -61,13 +61,13 @@ class RecurringContract(models.Model):
     )
     group_id = fields.Many2one(
         'recurring.contract.group', 'Payment Options',
-        required=True, ondelete='cascade', track_visibility="onchange")
+        required=True, ondelete='cascade', track_visibility="onchange", readonly=False)
     invoice_line_ids = fields.One2many(
         'account.invoice.line', 'contract_id',
         'Related invoice lines', readonly=True, copy=False)
     contract_line_ids = fields.One2many(
         'recurring.contract.line', 'contract_id',
-        'Contract lines', track_visibility="onchange", copy=True)
+        'Contract lines', track_visibility="onchange", copy=True, readonly=False)
     state = fields.Selection(
         [
             ('draft', _('Draft')),
@@ -90,7 +90,7 @@ class RecurringContract(models.Model):
         'res.company',
         'Company',
         required=True,
-        default=lambda self: self.env.user.company_id.id
+        default=lambda self: self.env.user.company_id.id, readonly=False
     )
 
     _sql_constraints = [

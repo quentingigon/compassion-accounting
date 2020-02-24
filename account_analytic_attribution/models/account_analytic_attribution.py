@@ -24,15 +24,15 @@ class AccountAttribution(models.Model):
     _order = "sequence desc"
 
     account_tag_id = fields.Many2one(
-        'account.account.tag', 'Account Tag', ondelete='cascade'
+        'account.account.tag', 'Account Tag', ondelete='cascade', readonly=False
     )
     analytic_tag_id = fields.Many2one(
         'account.analytic.tag', 'Analytic Tag',
-        ondelete='cascade'
+        ondelete='cascade', readonly=False
     )
     account_distribution_line_ids = fields.One2many(
         'account.analytic.distribution.line', 'attribution_id', 'Distribution',
-        required=True
+        required=True, readonly=False
     )
     date_start = fields.Date()
     date_stop = fields.Date()

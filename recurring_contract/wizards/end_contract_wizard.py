@@ -18,9 +18,9 @@ class EndContractWizard(models.TransientModel):
 
     contract_ids = fields.Many2many(
         'recurring.contract', string='Contracts',
-        default=lambda self: self.env.context.get('active_ids'))
+        default=lambda self: self.env.context.get('active_ids'), readonly=False)
     end_reason_id = fields.Many2one(
-        'recurring.contract.end.reason', required=True)
+        'recurring.contract.end.reason', required=True, readonly=False)
     end_date = fields.Datetime(default=fields.Datetime.now, required=True)
     additional_notes = fields.Text()
 

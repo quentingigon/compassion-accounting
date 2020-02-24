@@ -39,7 +39,7 @@ class ContractGroup(models.Model):
     payment_mode_id = fields.Many2one(
         'account.payment.mode', 'Payment mode',
         domain=[('payment_type', '=', 'inbound')],
-        track_visibility='onchange'
+        track_visibility='onchange', readonly=False
     )
 
     next_invoice_date = fields.Date(
@@ -53,7 +53,7 @@ class ContractGroup(models.Model):
         '_get_change_methods', default='do_nothing')
     partner_id = fields.Many2one(
         'res.partner', 'Partner', required=True,
-        ondelete='cascade', track_visibility="onchange")
+        ondelete='cascade', track_visibility="onchange", readonly=False)
     ref = fields.Char('Reference', default="/")
     recurring_unit = fields.Selection([
         ('day', _('Day(s)')),
