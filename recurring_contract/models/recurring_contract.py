@@ -126,7 +126,7 @@ class RecurringContract(models.Model):
         # Use 1st of next month as default invoice date
         today = datetime.today()
         next_invoice = today.replace(day=1) + relativedelta(months=1)
-        return next_invoice
+        return next_invoice.date()
 
     ##########################################################################
     #                              ORM METHODS                               #
@@ -160,7 +160,7 @@ class RecurringContract(models.Model):
             default = default or dict()
             # Put next_invoice_date after last_paid_date when copying contract
             if contract.last_paid_invoice_date:
-                last_paid_invoice = contract.last_paid_invoice
+                last_paid_invoice = contract.last_paid_invoice_date
                 next_invoice_date = last_paid_invoice + relativedelta(months=1)
             else:
                 # If it wasn't paid, put it this month (same day as before)
